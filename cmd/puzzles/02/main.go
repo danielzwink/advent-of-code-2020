@@ -26,13 +26,13 @@ func (p passwordPolicy) validPart2() bool {
 }
 
 func main() {
-	policies := getPasswordPolicies()
+	policies := getPasswordPolicies("02/input")
 
 	result1, duration1 := part1(policies)
-	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
+	fmt.Printf("Part 1: %4d (duration: %s)\n", result1, duration1)
 
 	result2, duration2 := part2(policies)
-	fmt.Printf("Part 2: %10d (duration: %s)\n", result2, duration2)
+	fmt.Printf("Part 2: %4d (duration: %s)\n", result2, duration2)
 }
 
 func part1(policies []passwordPolicy) (int, time.Duration) {
@@ -59,8 +59,8 @@ func part2(policies []passwordPolicy) (int, time.Duration) {
 	return valid, time.Since(start)
 }
 
-func getPasswordPolicies() []passwordPolicy {
-	list := util.ReadFile("02")
+func getPasswordPolicies(day string) []passwordPolicy {
+	list := util.ReadFile(day)
 	pattern := regexp.MustCompile("([0-9]+)\\-([0-9]+) ([a-z]): ([a-z]+)")
 
 	passwordPolicies := make([]passwordPolicy, 0, len(list))

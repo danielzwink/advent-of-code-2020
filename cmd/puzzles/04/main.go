@@ -10,6 +10,38 @@ import (
 	"time"
 )
 
+func main() {
+	result1, duration1 := part1(getPassports("04/input", NewPassport1))
+	fmt.Printf("Part 1: %4d (duration: %s)\n", result1, duration1)
+
+	result2, duration2 := part2(getPassports("04/input", NewPassport2))
+	fmt.Printf("Part 2: %4d (duration: %s)\n", result2, duration2)
+}
+
+func part1(passports []passport) (int, time.Duration) {
+	start := time.Now()
+
+	valid := 0
+	for _, p := range passports {
+		if p.valid() {
+			valid++
+		}
+	}
+	return valid, time.Since(start)
+}
+
+func part2(passports []passport) (int, time.Duration) {
+	start := time.Now()
+
+	valid := 0
+	for _, p := range passports {
+		if p.valid() {
+			valid++
+		}
+	}
+	return valid, time.Since(start)
+}
+
 type passport struct {
 	birthYear      int
 	issueYear      int
@@ -109,40 +141,8 @@ func (p passport) valid() bool {
 		len(p.passportID) > 0
 }
 
-func main() {
-	result1, duration1 := part1(getPassports(NewPassport1))
-	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
-
-	result2, duration2 := part2(getPassports(NewPassport2))
-	fmt.Printf("Part 2: %10d (duration: %s)\n", result2, duration2)
-}
-
-func part1(passports []passport) (int, time.Duration) {
-	start := time.Now()
-
-	valid := 0
-	for _, p := range passports {
-		if p.valid() {
-			valid++
-		}
-	}
-	return valid, time.Since(start)
-}
-
-func part2(passports []passport) (int, time.Duration) {
-	start := time.Now()
-
-	valid := 0
-	for _, p := range passports {
-		if p.valid() {
-			valid++
-		}
-	}
-	return valid, time.Since(start)
-}
-
-func getPassports(newPassport func([]string) passport) []passport {
-	file := util.OpenFile("04")
+func getPassports(day string, newPassport func([]string) passport) []passport {
+	file := util.OpenFile(day)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)

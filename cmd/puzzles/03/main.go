@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	treeMap := getTreeMap()
+	treeMap := getTreeMap("03/input")
 
 	result1, duration1 := part1(treeMap)
 	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
@@ -52,8 +52,8 @@ func countTrees(treeMap [][]int, right, down int) (trees int) {
 	return trees
 }
 
-func getTreeMap() [][]int {
-	list := util.ReadFile("03")
+func getTreeMap(day string) [][]int {
+	list := util.ReadFile(day)
 
 	treeMap := make([][]int, 0, 10)
 	for _, line := range list {

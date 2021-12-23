@@ -10,13 +10,13 @@ import (
 )
 
 func main() {
-	seatIDs := readSeatIDs()
+	seatIDs := readSeatIDs("05/input")
 
 	result1, duration1 := part1(seatIDs)
-	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
+	fmt.Printf("Part 1: %4d (duration: %s)\n", result1, duration1)
 
 	result2, duration2 := part2(seatIDs)
-	fmt.Printf("Part 2: %10d (duration: %s)\n", result2, duration2)
+	fmt.Printf("Part 2: %4d (duration: %s)\n", result2, duration2)
 }
 
 func part1(seatIDs []int) (int, time.Duration) {
@@ -38,8 +38,8 @@ func part2(seatIDs []int) (int, time.Duration) {
 	return 0, time.Since(start)
 }
 
-func readSeatIDs() []int {
-	lines := util.ReadFile("05")
+func readSeatIDs(day string) []int {
+	lines := util.ReadFile(day)
 
 	seatIDs := make([]int, len(lines))
 	for i, line := range lines {

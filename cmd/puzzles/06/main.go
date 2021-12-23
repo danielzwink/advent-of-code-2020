@@ -8,13 +8,13 @@ import (
 )
 
 func main() {
-	groups := readGroups()
+	groups := readGroups("06/input")
 
 	result1, duration1 := part1(groups)
-	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
+	fmt.Printf("Part 1: %5d (duration: %s)\n", result1, duration1)
 
 	result2, duration2 := part2(groups)
-	fmt.Printf("Part 2: %10d (duration: %s)\n", result2, duration2)
+	fmt.Printf("Part 2: %5d (duration: %s)\n", result2, duration2)
 }
 
 func part1(groups [][]string) (int, time.Duration) {
@@ -55,8 +55,8 @@ func characterCounts(group []string) map[rune]int {
 	return runes
 }
 
-func readGroups() [][]string {
-	file := util.OpenFile("06")
+func readGroups(day string) [][]string {
+	file := util.OpenFile(day)
 	defer file.Close()
 
 	groups := make([][]string, 0)

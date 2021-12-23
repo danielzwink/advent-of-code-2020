@@ -2,6 +2,6 @@
 
 ## Structure
 
-- `assets/puzzles/<day>.txt` contains my puzzle inputs
+- `assets/puzzles/<day>/input.txt` contains my puzzle inputs
 - `cmd/puzzles/<day>/main.go` contains the solution source code
 - `pkg/util` contains utility functions

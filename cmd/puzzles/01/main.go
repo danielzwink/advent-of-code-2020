@@ -9,13 +9,13 @@ import (
 )
 
 func main() {
-	numbers := getExpenseReport()
+	numbers := getExpenseReport("01/input")
 
 	result1, duration1 := part1(numbers)
-	fmt.Printf("Part 1: %10d (duration: %s)\n", result1, duration1)
+	fmt.Printf("Part 1: %9d (duration: %s)\n", result1, duration1)
 
 	result2, duration2 := part2(numbers)
-	fmt.Printf("Part 2: %10d (duration: %s)\n", result2, duration2)
+	fmt.Printf("Part 2: %9d (duration: %s)\n", result2, duration2)
 }
 
 const NecessarySum = 2020
@@ -72,8 +72,8 @@ func part2(numbers []int) (int, time.Duration) {
 	return 0, time.Since(start)
 }
 
-func getExpenseReport() []int {
-	list := util.ReadFile("01")
+func getExpenseReport(day string) []int {
+	list := util.ReadFile(day)
 
 	expenseReport := make([]int, 0, len(list))
 	for _, value := range list {
